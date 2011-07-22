@@ -1,5 +1,12 @@
 This is a simple dragging library for JavaScript.
 
+Demos:
+* http://aboodman.github.com/dom-drag/ex1.html
+* http://aboodman.github.com/dom-drag/ex2.html
+* http://aboodman.github.com/dom-drag/ex3.html
+* http://aboodman.github.com/dom-drag/ex4.html
+* http://aboodman.github.com/dom-drag/ex5.html
+
 To make an object draggable with DOM-drag, you call Drag.init( ), and pass it a 
 reference to the object you want to drag. The function also accepts a whole
 slew of other parameters, but lets not get ahead of ourselves.
