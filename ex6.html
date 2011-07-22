@@ -1,0 +1,12 @@
+<script language="javascript" src="dom-drag.js"></script>
+
+<img id="p" src="p.gif" style="position:absolute; left:20px; top:50px;" />
+
+<script language="javascript">
+	window.onload = function() {
+		Drag.init(document.getElementById("p"), null, null, null, null, null, false, false, null, mySin);
+	}
+	function mySin(x) {
+		return Math.round(Math.sin((x - 20) / 10) * 10) + 50;
+	}
+</script>

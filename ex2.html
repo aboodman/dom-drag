@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<script language="javascript" src="dom-drag.js"></script>
+<style type="text/css">
+	#root {
+		position:absolute;
+		height:100px;
+		width:150px;
+		background-color:#F4F4F4;
+		border:1px solid #333;
+		}
+
+	#handle {
+		margin:2px;
+		padding:2px;
+		width:142px;
+		color:white;
+		background-color:navy;
+		font-family:verdana, sans-serif;
+		font-size:10px;
+		}
+</style>
+</head>
+
+<body>
+<div id="root" style="left:20px; top:20px;">
+	<div id="handle">Handle</div>
+</div>
+
+<script language="javascript">
+	var theHandle = document.getElementById("handle");
+	var theRoot   = document.getElementById("root");
+	Drag.init(theHandle, theRoot);
+</script>
+</body>
+</html>

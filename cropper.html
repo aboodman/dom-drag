@@ -1,0 +1,52 @@
+<html>
+<head>
+<title> - cropper - </title>
+<style type="text/css">
+<!--
+#pbox {
+		width:300px; height:300px;
+		overflow:hidden;
+	}
+.opacity{filter: alpha(opacity=60)}
+-->
+</style>
+<script language="javascript" src="dom-drag.js"></script>
+<script language="javascript">
+	var oThang, oHandle, reportBox, iReportCount = 0;
+
+	window.onload = function() {
+		if (document.all || document.getElementById)
+		{
+			oThang = document.all ? document.all["thang"] : document.getElementById("thang")
+			oHandle = document.all ? document.all["handle"] : document.getElementById("handle")
+			oReport = document.all ? document.all["report"] : document.getElementById("report")
+
+			Drag.init(oHandle, oThang, -250, -50, -250, -50);
+
+			// report stuff
+			oThang.onDrag = function(x, y) { reportDrag("", x, y); }
+		}
+
+		function reportDrag(who, x, y) {
+			oReport.value = who + "" + " X = " + (x + 250) + " Y = " + (y + 250) + " W = 100 H = 100"
+		}
+
+		oThang.onDrag(-250, -250);
+	}
+</script>
+</head>
+
+<body>
+
+<div style="width:300px; height:300px; overflow:hidden; top:20px; left:20px;">
+	<img src="snare_pic_large-300.jpg" />
+	<div id="thang" style="position:absolute; left:-250px; top:-250px;">
+		<img class="opacity" style="position:absolute; left:0px; top:0px;" src="selection2.gif" />
+		<img id="handle" style="position:absolute; left:250px; top:250px; width:100px; height:100px;" src="x.gif" />
+	</div>
+</div>
+
+<input type="text" id="report" style="width:300px;" />
+
+</body>
+</html>

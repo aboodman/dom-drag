@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html>
+<head>
+<title>DOM Drag Demo</title>
+<style type="text/css">
+<!--
+	@import "/_common/demo.css";
+	body { margin:0px; }
+	#b {
+		cursor:move;
+	}
+	#g {
+		cursor:hand;
+		cursor:pointer;
+	}
+
+	#pbox {
+		position:absolute;
+		left:20px; top:20px;
+		width:300px; height:275px;
+		border:1px dashed #333399;
+	}
+-->
+</style>
+<script language="javascript" src="dom-drag.js"></script>
+<script language="javascript">
+	var reportBox, iReportCount = 0;
+
+	window.onload = function() {
+		if (document.all || document.getElementById)
+		{
+			var oB = document.all ? document.all["b"] : document.getElementById("b")
+			var oG = document.all ? document.all["g"] : document.getElementById("g")
+			var oP = document.all ? document.all["p"] : document.getElementById("p")
+			
+			reportBox  = document.all ? document.all["oReport"] : document.getElementById("oReport")
+			reportBox2 = document.all ? document.all["oReport2"] : document.getElementById("oReport2")
+
+			Drag.init(oB);
+			Drag.init(oG);
+			Drag.init(oP, null, 0, 274, 0, 249);
+
+			// report stuff
+			oB.onDragStart = function(x, y) { reportDragStart("black", x, y); }
+			oG.onDragStart = function(x, y) { reportDragStart("green", x, y); }
+			oP.onDragStart = function(x, y) { reportDragStart("purple", x, y); }
+
+			oB.onDragEnd = function(x, y) { reportDragEnd("black", x, y); }
+			oG.onDragEnd = function(x, y) { reportDragEnd("green", x, y); }
+			oP.onDragEnd = function(x, y) { reportDragEnd("purple", x, y); }
+
+			oB.onDrag = function(x, y) { reportDrag("black", x, y); }
+			oG.onDrag = function(x, y) { reportDrag("green", x, y); }
+			oP.onDrag = function(x, y) { reportDrag("purple", x, y); }
+		}
+
+		function reportDragStart(who, x, y) {
+			reportBox.value += who + " | onDragStart " + " (" + x + "," + y + ")\n"
+		}
+
+		function reportDragEnd(who, x, y) {
+			reportBox.value += who + " | onDragEnd " + " (" + x + "," + y + ")\n"
+		}
+
+		function reportDrag(who, x, y) {
+			reportBox2.value = who + " | onDrag " + " (" + x + "," + y + ")"
+		}
+	}
+</script>
+</head>
+
+<body>
+	<textarea id="oReport" style="margin-top:320px; margin-left:20px; width:300px; height:100px;" wrap="off"></textarea>
+	<input type="text" id="oReport2" style="margin-left:20px; margin-top:5px; width:300px;" />
+	<!-- note that you don't have to contain a layer like this to constrain it. the DIV is only there so i can draw a border around it. -->
+	<div id="pbox">
+		<img id="p" title="isn't this simple pointer much better?" style="position:absolute; top:230px; left:200px;" src="p.gif" />
+	</div>
+	<img id="b" title="these special cursors are really annoying" style="position:absolute; left:25px; top:30px;" src="b.gif" />
+	<img id="g" title="please don't use them" style="position:absolute; left:175px; top:50px;" src="g.gif" />
+</body>
+</html>

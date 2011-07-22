@@ -1,0 +1,11 @@
+<script language="javascript" src="dom-drag.js"></script>
+
+<img id="p" src="p.gif" style="position:absolute; left:50px; bottom:20px;" />
+<img id="g" src="g.gif" style="position:absolute; right:20px; bottom:100px;" />
+<img id="b" src="b.gif" style="position:absolute; left:60px; top:20px;" />
+
+<script language="javascript">
+	Drag.init(document.getElementById("p"), null, null, null, null, null, false, true);
+	Drag.init(document.getElementById("g"), null, null, null, null, null, true, true);
+	Drag.init(document.getElementById("b"), null, null, null, null, null, false, false);
+</script>

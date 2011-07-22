@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<script language="javascript" src="dom-drag.js"></script>
+<style type="text/css">
+	#thumb {
+		position:absolute;
+		height:50px;
+		width:12px;
+		background-color:#eee;
+		border:1px outset #eee;
+		}
+</style>
+</head>
+
+<body>
+<div id="thumb" style="left:25px; top:25px;"></div>
+
+<script language="javascript">
+	var aThumb = document.getElementById("thumb");
+	Drag.init(aThumb, null, 25, 25, 25, 200);
+</script>
+</body>
+</html>
